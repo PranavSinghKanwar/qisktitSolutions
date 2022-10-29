@@ -1,0 +1,16 @@
+import os 
+os.environ["TEAMID"] = "Coding Bad"
+from qiskit import QuantumCircuit
+def make_bell_state():
+    qc = QuantumCircuit(2)
+    ### your code here
+    qc.x(0)
+    qc.h(0)
+    qc.cx(0,1)
+    ### your code here
+    return qc 
+def test_function_1():
+    circuit = make_bell_state()
+    return circuit 
+
+test_function_1().draw()
