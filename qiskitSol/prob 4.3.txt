@@ -1,0 +1,35 @@
+import os 
+os.environ["TEAMID"] = "Coding Bad"
+from qiskit import QuantumCircuit 
+
+
+
+def dj_circuit_general(n, oracle):
+    
+    dj_circuit = QuantumCircuit(n+1, n)
+    for i in range(n):
+        dj_circuit.h(i)
+    dj_circuit.x(n)
+    dj_circuit.h(n)
+    dj_circuit.append(oracle,range(n+1))
+    for j in range(n):
+        dj_circuit.h(j)
+        dj_circuit.measure(j,j)
+    ### Your code here 
+    
+    ### Your code here 
+    
+    return dj_circuit
+
+def test_function_3():
+    N = 6
+    
+    # constant oracle with f(x) = 0
+    oracle = QuantumCircuit(7)
+    oracle.id(6)
+    
+    circuit = dj_circuit_general(N, oracle)
+    
+    return circuit
+
+test_function_3().draw()

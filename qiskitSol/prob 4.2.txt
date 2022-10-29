@@ -1,0 +1,29 @@
+import os 
+os.environ["TEAMID"] = "Coding Bad"
+from qiskit import QuantumCircuit
+
+def dj_circuit_4q(oracle):
+    
+    circuit = QuantumCircuit(5, 4)
+    ### Your code here 
+    for i in range(4):
+        circuit.h(i)
+    circuit.x(4)
+    circuit.h(4)
+    circuit.append(oracle,range(5))
+    for j in range(4):
+        circuit.h(j)
+        circuit.measure(j,j)
+    
+    ### Your code here 
+    
+    return circuit
+def test_function_2():
+    oracle = QuantumCircuit(5)
+    oracle.id(4)
+    
+    dj_circuit = dj_circuit_4q(oracle)
+    
+    return dj_circuit
+
+test_function_2().draw()
